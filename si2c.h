@@ -3,6 +3,9 @@
 
 /* **********reg for multi-config -- unimplement now********** */
 
+//! \defgroup si2c_config the configuration of i2c protocol implement 
+/// @{
+
 typedef enum si2c_mode {
 	SI2C_MODE_MASTER,
 	SI2C_MODE_SLAVE
@@ -19,6 +22,15 @@ typedef struct si2c_dev {
 	uint16_t         freq_kHz;  //!< frequency of i2c scl
 	uint16_t         addr;  //!< own addr of slave mode
 } si2c_dev_t;
+
+///! @}  end of group si2c_config
+
+#ifdef __cplusplus
+	extern "C" {
+#endif
+
+///! \defgroup si2c_api interface to user 
+/// @{
 
 /*! \brief test addr of slave 
  *  \retval addr of slave
@@ -47,6 +59,12 @@ int si2c_write_reg(uint8_t slave, uint8_t reg,const uint8_t * bytes, size_t len)
  *  \retval 0==ok ; -1==err
  * */
 int si2c_read_reg(uint8_t slave, uint8_t reg, uint8_t * bytes, size_t len);
+
+/// @} group si2c_api
+
+#ifdef __cplusplus
+	}
+#endif
 
 #endif  //!< _SI2C_H_
 
